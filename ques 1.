@@ -1,0 +1,22 @@
+inp=input ('enter integers:')
+tup=tuple(int(item) for item in inp.split())
+print ('Integers entered are:')
+print (tup)
+no_dup_tup=tuple(set(tup))
+print ('Tuplet without duplicates is:')
+print (no_dup_tup)
+dup_set=list(set([ele for ele in tup
+                  if tup.count(ele)>1]))
+print ('the set of duplicates is:')
+print(dup_set)
+res=sum(dup_set)
+print('sum of duplicates is:')
+print(res)
+def recmult(a,n):
+    if n==0:
+        return (a[n])
+    else:
+        return (a[n]*recmult(a,n-1))
+n=len(dup_set)
+print ('product of duplicate elements is:')
+print (recmult(dup_set,n-1))
