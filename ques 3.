@@ -1,0 +1,17 @@
+import re
+
+def count_words(sentences):
+    word_count = {}
+    total_words = 0
+    for sentence in sentences:
+        for word in re.findall(r'\w+', sentence):
+            word = word.lower()
+            word_count[word] = word_count.get(word, 0) + 1
+            total_words += 1
+    print("No. of unique words:", len(word_count))
+    print("Total no. of words:", total_words)
+    return word_count
+
+sentences = input("Enter multiple sentences: ")
+word_count = count_words(sentences.split("."))
+print(word_count)
