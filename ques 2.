@@ -1,0 +1,18 @@
+def revlis(lst):
+    if len(lst) == 0:
+        return lst
+    else:
+        return [lst[-1]] + revlis(lst[:-1])
+
+lst = list(input("Enter a list of characters without spaces: "))
+print("Input list is:")
+print(lst)
+print("Reversed list is:")
+print(revlis(lst))
+length=len(lst)
+for i in range(length):
+    for j in range(length-i-1):
+        print (" ",end="")
+    for j in range(i+1):
+        print (lst[j], end=" ")
+    print()
