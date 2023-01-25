@@ -1,0 +1,51 @@
+matrix_operation.py:
+class operations:
+    def calc_inv(self, matrix):
+        pass
+    
+    def calc_det(self, matrix):
+        pass
+    
+    def calc_adj(self, matrix):
+        pass
+
+results.py:
+def input_matrix():
+    rows = int(input("Enter the number of rows: "))
+    cols = int(input("Enter the number of columns: "))
+    matrix = []
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            element = int(input(f"Enter element at position {i+1},{j+1}: "))
+            row.append(element)
+        matrix.append(row)
+    return matrix
+print ("Please Input matrix A:")
+A = input_matrix()
+print("Matrix A:", A)
+print ("Please input matrix B:")
+B = input_matrix()
+print("Matrix B:", B)
+invA = op.calc_inv(A)
+invB = op.calc_inv(B)
+def multiply_matrices(A, B):
+    rows_A = len(A)
+    cols_A = len(A[0])
+    rows_B = len(B)
+    cols_B = len(B[0])
+    if cols_A != rows_B:
+        print("Error: The number of columns of matrix A must be equal to the number of rows of matrix B.")
+        return None
+
+    result = [[0 for j in range(cols_B)] for i in range(rows_A)]
+    for i in range(rows_A):
+        for j in range(cols_B):
+            for k in range(cols_A):
+                result[i][j] += A[i][k] * B[k][j]
+    return result
+res1 = multiply_matrices(A, invB)
+res2 = multiply_matrices(invA, invB)
+if result is not None:
+    print("Result of matrix multiplication of A and inverse of B:", res1)
+    print("Result of matrix multiplication of inverse of A and inverse of B:", res2)
