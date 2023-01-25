@@ -1,0 +1,22 @@
+import csv
+with open('names.csv', 'r') as file:
+    reader = csv.reader(file)
+    sorted_rows = sorted(reader, key=lambda x: int(x[0]))
+with open('names.csv', 'w') as file:
+    writer = csv.writer(file)
+    for i, row in enumerate(sorted_rows):
+        if i % 2 == 0:
+            writer.writerow(row)
+with open('names.csv', 'r') as file:
+    reader = csv.reader(file)
+    names = [row[1].strip() for row in reader]
+    names_str = ''.join(names)
+    min_diff = float('inf')
+    for i in range(len(names_str) - 1):
+        diff = abs(ord(names_str[i]) - ord(names_str[i + 1]))
+        if diff != 0:  
+            min_diff = min(min_diff, diff)
+    if min_diff == float('inf'):
+        print("All characters are same")
+    else:
+        print("Minimum absolute ASCII difference:", min_diff)
