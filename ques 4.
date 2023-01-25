@@ -1,0 +1,13 @@
+def is_substring(A, B):
+    if A in B:
+        return True
+    else:
+        return False
+
+A = input("Enter string A: ")
+B = input("Enter string B: ")
+
+if is_substring(A, B):
+    print("String A is a substring of String B.")
+else:
+    print("String A is not a substring of String B.")
